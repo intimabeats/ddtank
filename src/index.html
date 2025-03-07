@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixelated DDTank</title>
+  <link rel="stylesheet" href="src/styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="game-canvas"></canvas>
+    <div id="ui-container" class="pixel-border">
+      <div id="player-info">
+        <div id="player-name">Player 1</div>
+        <div id="player-health">100 HP</div>
+      </div>
+      <div id="power-meter">
+        <div id="power-bar"></div>
+      </div>
+      <div id="angle-display">45°</div>
+      <div id="weapon-selector">
+        <div class="weapon selected" data-weapon="basic">Basic</div>
+        <div class="weapon" data-weapon="bomb">Bomb</div>
+      </div>
+      <div id="controls-info">← → : Angle | SPACE : Charge & Release | 1-2 : Weapon</div>
+    </div>
+  </div>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

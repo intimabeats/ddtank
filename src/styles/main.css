@@ -1,0 +1,179 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #111;
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+  overflow: hidden;
+  image-rendering: pixelated;
+}
+
+#game-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#game-canvas {
+  background-color: #000;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  image-rendering: pixelated;
+}
+
+#ui-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 800px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 2px solid #00ffff;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#player-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+#power-meter {
+  height: 20px;
+  background-color: #333;
+  border: 2px solid #555;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+#power-meter::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+#power-bar {
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(to right, #00ff00, #ffff00, #ff0000);
+  transition: width 0.1s;
+  position: relative;
+}
+
+#power-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+#angle-display {
+  text-align: center;
+  font-size: 14px;
+  margin: 5px 0;
+  text-shadow: 0 0 5px #00ffff;
+}
+
+#weapon-selector {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.weapon {
+  padding: 5px 10px;
+  background-color: #333;
+  border: 2px solid #555;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 10px;
+  transition: all 0.2s ease;
+}
+
+.weapon:hover {
+  background-color: #444;
+  transform: translateY(-2px);
+}
+
+.weapon.selected {
+  background-color: #00aaff;
+  border-color: #00ffff;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+/* Pixelated elements */
+.pixel-border {
+  position: relative;
+}
+
+.pixel-border::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: transparent;
+  border: 2px solid #00ffff;
+  border-radius: 8px;
+  clip-path: polygon(
+    0% 0%, 10% 0%, 10% 10%, 90% 10%, 90% 0%, 100% 0%,
+    100% 10%, 90% 10%, 90% 90%, 100% 90%, 100% 100%,
+    90% 100%, 90% 90%, 10% 90%, 10% 100%, 0% 100%,
+    0% 90%, 10% 90%, 10% 10%, 0% 10%
+  );
+}
+
+/* Animations */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Controls info */
+#controls-info {
+  color: #aaa;
+  text-align: center;
+  font-size: 8px;
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
